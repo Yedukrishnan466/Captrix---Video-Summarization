@@ -1,0 +1,164 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>welcome</title>
+    <link rel="stylesheet" href="{% static 'css/w_style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/footer_style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/w_navbar.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    {% include "w_navbar.html" %}   
+    <div class="welcome-container">
+        <div class="img-and-text-container">
+
+    <!-- LEFT SIDE (TEXT CONTENT - 55%) -->
+    <div class="text-content">
+
+        <div class="main-title">
+            <div class="main-logo">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="50"
+                    height="50"
+                    fill="none">
+                    <defs>
+                        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#ec4899" />
+                            <stop offset="100%" stop-color="#c084fc" />
+                        </linearGradient>
+                    </defs>
+
+                    <path stroke="url(#logoGradient)"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z" />
+                </svg>
+            </div>
+            <h1 class="main-title-text">Captrix</h1>
+        </div>
+
+        <div class="ai-logo">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="16"
+                    height="16"
+                    fill="none"
+                    stroke="#ec4899"
+                    stroke-width="1.5">
+                <path stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"/>
+                </svg>
+            &nbsp;
+                AI-Powered Video Intelligence&nbsp;&nbsp;
+        </div>
+
+        <div class="tagline">
+            Intelligent Video Summarization, Powered by 
+            <span class="advanced-ai">Advanced AI</span>
+        </div>
+
+        <div class="subtitle">
+            Stop spending hours on long videos. Captrix uses advanced artificial intelligence 
+            to instantly transform full-length content into sharp, meaningful summaries—
+            so you can focus on what truly matters.
+        </div>
+        
+        <div class="hero-buttons">
+            <a href="{% url 'login' %}" class="hero-signin-btn">Sign In</a>
+            <a href="{% url 'signup' %}" class="hero-getstarted-btn">Get Started</a>
+        </div>
+
+    </div>
+
+    <div class="image-content">
+        <img src="{% static 'images/cover-pic.png' %}" alt="AI Video Illustration">
+    </div>
+    </div>
+    </div>
+    <div class="features-container">
+        <div class="features-title"id="features-title">Intelligent Features Built for <span class="maximum-productivity">Smarter Video Workflows</span></div>
+        <div class="features-subtitle">Transform video content into concise, actionable summaries.</div>
+        <div class="feature-blocks-container-1">
+            <div class="feature-box"id="f1">  
+                <svg id="feature-logos" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                <path fill-rule="evenodd" d="M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.75a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .913-.143Z" clip-rule="evenodd" />
+                </svg>
+                <div class="feature-heading">Fast Processing</div>
+                <div class="feature-description">Generate concise video summaries within seconds using optimized AI-based analysis.</div>
+            </div>
+            <div class="feature-box"id="f2">  
+                <svg id="feature-logos"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                <path fill-rule="evenodd" d="M9 4.5a.75.75 0 0 1 .721.544l.813 2.846a3.75 3.75 0 0 0 2.576 2.576l2.846.813a.75.75 0 0 1 0 1.442l-2.846.813a3.75 3.75 0 0 0-2.576 2.576l-.813 2.846a.75.75 0 0 1-1.442 0l-.813-2.846a3.75 3.75 0 0 0-2.576-2.576l-2.846-.813a.75.75 0 0 1 0-1.442l2.846-.813A3.75 3.75 0 0 0 7.466 7.89l.813-2.846A.75.75 0 0 1 9 4.5ZM18 1.5a.75.75 0 0 1 .728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 0 1 0 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 0 1-1.456 0l-.258-1.036a2.625 2.625 0 0 0-1.91-1.91l-1.036-.258a.75.75 0 0 1 0-1.456l1.036-.258a2.625 2.625 0 0 0 1.91-1.91l.258-1.036A.75.75 0 0 1 18 1.5ZM16.5 15a.75.75 0 0 1 .712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 0 1 0 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 0 1-1.422 0l-.395-1.183a1.5 1.5 0 0 0-.948-.948l-1.183-.395a.75.75 0 0 1 0-1.422l1.183-.395c.447-.15.799-.5.948-.948l.395-1.183A.75.75 0 0 1 16.5 15Z" clip-rule="evenodd" />
+                </svg>
+                <div class="feature-heading">AI-Driven Accuracy</div>
+                <div class="feature-description">Advanced machine learning ensures you get the most relevant and accurate summaries every time.</div>
+            </div>
+            <div class="feature-box"id="f1">
+                <svg id="feature-logos"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z" clip-rule="evenodd" />
+                </svg>
+                <div class="feature-heading">Time Saving</div>
+                <div class="feature-description">Reduce hours of video watching to minutes of reading. Perfect for busy professionals and students.</div>  
+            </div>
+        </div>
+        <div class="feature-blocks-container-2">
+            <div class="feature-box"id="f2">
+                <svg id="feature-logos"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                <path d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32l8.4-8.4Z" />
+                <path d="M5.25 5.25a3 3 0 0 0-3 3v10.5a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3V13.5a.75.75 0 0 0-1.5 0v5.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5V8.25a1.5 1.5 0 0 1 1.5-1.5h5.25a.75.75 0 0 0 0-1.5H5.25Z" />
+                </svg>  
+                <div class="feature-heading">Key Highlights</div>
+                <div class="feature-description">Automatically extract key points, action items, and important timestamps from any video.</div>
+            </div>
+            <div class="feature-box"id="f1">
+                <svg id="feature-logos"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                <path d="M4.5 4.5a3 3 0 0 0-3 3v9a3 3 0 0 0 3 3h8.25a3 3 0 0 0 3-3v-9a3 3 0 0 0-3-3H4.5ZM19.94 18.75l-2.69-2.69V7.94l2.69-2.69c.944-.945 2.56-.276 2.56 1.06v11.38c0 1.336-1.616 2.005-2.56 1.06Z" />
+                </svg>
+                <div class="feature-heading">Multi-Format Support</div>
+                <div class="feature-description">Works with MP4, MOV, AVI, and more. No conversion needed—just upload and summarize.</div>  
+            </div>
+            <div class="feature-box"id="f2">
+                <svg id="feature-logos"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clip-rule="evenodd" />
+                </svg>
+                <div class="feature-heading">Context-Aware Analysis</div>       
+                <div class="feature-description">Analyzes visual content and contextual cues to deliver meaningful summaries—not just transcripts.</div>  
+            </div>
+        </div>
+        <div class="three-steps-container">
+            <div class="simple-process">Simple Process, <span class="powerful-results">Powerful Results</span></div>
+            <div class="three-easy-steps">Get started in three easy steps</div>
+            <div class="step-icons-container">
+                <div class="each-step-containers">
+                    <div class="step-image">1</div>
+                    <div class="step-title">Upload Video</div>
+                    <div class="step-description">Drag and drop or select your video file. We support all major formats.</div>    
+                </div>
+                <div class="each-step-containers">
+                    <div class="step-image">2</div>
+                    <div class="step-title">AI Processing</div>
+                    <div class="step-description">Our advanced AI analyzes the content and extracts key insights automatically.</div>   
+                </div>
+                <div class="each-step-containers">
+                    <div class="step-image">3</div>
+                    <div class="step-title">Get Summary</div>
+                    <div class="step-description">Receive a concise, actionable summary with timestamps and key points.</div>   
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include "footer.html" %}   
+</body>
+</html>

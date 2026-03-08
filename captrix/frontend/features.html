@@ -1,0 +1,244 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Features | Captrix</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/footer_style.css' %}">
+<link rel="stylesheet" href="{% static 'css/navbar_style.css' %}">
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+}
+
+body{
+background:#ffffff;
+color:#0f172a;
+line-height:1.6;
+overflow-x:hidden;
+}
+
+/* GRADIENT TEXT */
+.gradient-text{
+background:linear-gradient(90deg,#7c3aed,#2563eb);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+/* HERO */
+.hero{
+padding:150px 20px 70px;
+text-align:center;
+background:linear-gradient(135deg,#faf5ff,#eef2ff);
+position:relative;
+}
+
+.hero h1{
+font-size:56px;
+font-weight:700;
+margin-bottom:15px;
+}
+
+.hero p{
+font-size:18px;
+color:#475569;
+max-width:750px;
+margin:auto;
+}
+
+/* SECTION WRAPPER */
+.section{
+width:90%;
+max-width:1200px;
+margin:auto;
+padding:60px 0;
+}
+
+/* FEATURE GRID */
+.feature-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:35px;
+}
+
+/* FEATURE CARD */
+.feature-card{
+background:white;
+border-radius:25px;
+overflow:hidden;
+box-shadow:0 20px 50px rgba(0,0,0,0.06);
+transition:0.4s;
+display:flex;
+flex-direction:column;
+}
+
+.feature-card:hover{
+transform:translateY(-8px);
+box-shadow:0 25px 60px rgba(124,58,237,0.2);
+}
+
+.feature-card img{
+width:100%;
+height:200px;
+object-fit:cover;
+}
+
+.feature-content{
+padding:25px;
+flex-grow:1;
+}
+
+.feature-content h3{
+font-size:22px;
+margin-bottom:12px;
+}
+
+.feature-content p{
+color:#475569;
+font-size:15px;
+}
+
+/* SUMMARY STRIP */
+.summary-strip{
+margin-top:70px;
+padding:60px 40px;
+border-radius:40px;
+background:linear-gradient(135deg,#b15bf4,#13388a);
+color:white;
+text-align:center;
+}
+
+.summary-strip h2{
+font-size:34px;
+margin-bottom:15px;
+}
+
+.summary-strip p{
+max-width:700px;
+margin:auto;
+opacity:0.95;
+}
+
+
+@media(max-width:768px){
+.hero h1{font-size:34px;}
+}
+</style>
+</head>
+<body>
+{% include "navbar.html" %}  
+<!-- HERO -->
+<section class="hero">
+<h1>Explore the <span class="gradient-text">Power of Captrix</span></h1>
+<p>
+Designed with cutting-edge Artificial Intelligence, Captrix delivers fast, 
+accurate, and context-aware video summaries for professionals, students, 
+and organizations seeking smarter knowledge consumption.
+</p>
+</section>
+
+<!-- FEATURES GRID -->
+<section class="section">
+
+<div class="feature-grid">
+
+<!-- Fast Processing -->
+<div class="feature-card">
+<img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+<div class="feature-content">
+<h3 class="gradient-text">Fast Processing</h3>
+<p>
+Generate concise video summaries within seconds using optimized AI-based analysis. 
+Captrix leverages efficient backend architecture to ensure high-speed performance 
+without sacrificing quality or accuracy.
+</p>
+</div>
+</div>
+
+<!-- AI Accuracy -->
+<div class="feature-card">
+<img src="https://images.unsplash.com/photo-1507149833265-60c372daea22" alt="AI Accuracy">
+<div class="feature-content">
+<h3 class="gradient-text">AI-Driven Accuracy</h3>
+<p>
+Advanced machine learning algorithms intelligently extract the most relevant 
+insights from video content. Every summary is structured to highlight 
+meaningful information while filtering out noise.
+</p>
+</div>
+</div>
+
+<!-- Time Saving -->
+<div class="feature-card">
+<img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7" alt="Time Saving">
+<div class="feature-content">
+<h3 class="gradient-text">Time Saving</h3>
+<p>
+Reduce hours of video watching to minutes of reading. Captrix empowers 
+busy professionals and students to absorb knowledge efficiently 
+without missing key information.
+</p>
+</div>
+</div>
+
+<!-- Key Highlights -->
+<div class="feature-card">
+<img src="https://images.unsplash.com/photo-1526378722484-bd91ca387e72" alt="Key Highlights">
+<div class="feature-content">
+<h3 class="gradient-text">Key Highlights Extraction</h3>
+<p>
+Automatically extract key points, action items, and important timestamps. 
+Summaries are organized and structured for easy reference and quick revision.
+</p>
+</div>
+</div>
+
+<!-- Multi Format -->
+<div class="feature-card">
+<img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" alt="Multi Format Support">
+<div class="feature-content">
+<h3 class="gradient-text">Multi-Format Support</h3>
+<p>
+Supports MP4, MOV, AVI, and multiple other formats. No need for manual 
+conversion — simply upload your file and let Captrix handle the analysis.
+</p>
+</div>
+</div>
+
+<!-- Context Aware -->
+<div class="feature-card">
+<img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" alt="Context Aware Analysis">
+<div class="feature-content">
+<h3 class="gradient-text">Context-Aware Analysis</h3>
+<p>
+Captrix goes beyond transcription. By analyzing contextual cues and 
+visual elements, it generates summaries that reflect the true meaning 
+and intent behind the content.
+</p>
+</div>
+</div>
+
+</div>
+
+<!-- SUMMARY STRIP -->
+<div class="summary-strip">
+<h2>Smarter Video Learning Starts Here</h2>
+<p>
+Captrix integrates speed, intelligence, and simplicity into a single platform. 
+Our AI-powered system ensures that every summary delivers maximum value 
+in minimum time.
+</p>
+</div>
+
+</section>
+
+{% include "footer.html" %}  
+
+</body>
+</html>

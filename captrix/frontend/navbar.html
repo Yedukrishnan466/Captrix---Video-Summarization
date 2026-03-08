@@ -1,0 +1,81 @@
+{% load static %}
+
+<nav class="navbar">
+  <div class="navbar-container">
+
+    <!-- LEFT: Logo -->
+    <div class="navbar-brand">
+      <svg xmlns="http://www.w3.org/2000/svg"
+           viewBox="0 0 24 24"
+           width="30"
+           height="30"
+           fill="none">
+        <defs>
+          <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#ec4899" />
+            <stop offset="100%" stop-color="#c084fc" />
+          </linearGradient>
+        </defs>
+
+        <path stroke="url(#logoGradient)"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z" />
+      </svg>
+      <span class="navbar-title">Captrix</span>
+    </div>
+
+    <!-- CENTER: Navigation Links -->
+    <ul class="navbar-center">
+      <li><a href="{% url 'home' %}">Home</a></li>  
+      <li><a href="{% url 'features' %}"target="blank">Features</a></li>
+      <li><a href="{% url 'about' %}"target="blank">About</a></li>
+    </ul>
+    <div class="profile-container" onclick="toggleDropdown()">
+    <div class="profile-icon">
+      <svg xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor">
+        <path fill-rule="evenodd"
+          d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
+          clip-rule="evenodd" />
+      </svg>
+    </div>
+    <span class="profile-name">{{ request.user.first_name }}</span>
+    <div id="profileDropdown" class="dropdown-menu">
+        <a href="{% url 'your_summaries' %}"target="blank">Your Summaries</a>
+        <a href="{% url 'logout' %}">Logout</a>
+    </div>
+  </div>
+    <!-- {{ request.user.username }} -->
+    <!-- Hamburger Menu Button -->
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+  </div>
+  <script>
+  function toggleMenu() {
+    document.querySelector(".navbar-center").classList.toggle("active");
+  }
+
+  function toggleDropdown() {
+    const dropdown = document.getElementById("profileDropdown");
+    dropdown.style.display = 
+        dropdown.style.display === "block" ? "none" : "block";
+    }
+
+    // Close dropdown when clicking outside
+    window.onclick = function(event) {
+        if (!event.target.closest('.profile-container')) {
+            const dropdown = document.getElementById("profileDropdown");
+            if (dropdown) {
+                dropdown.style.display = "none";
+            }
+        }
+    }
+</script>
+</nav>

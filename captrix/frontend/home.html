@@ -1,0 +1,511 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/footer_style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar_style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+      window.addEventListener("pageshow", function (event) {
+          if (event.persisted || window.performance.getEntriesByType("navigation")[0].type === "back_forward") {
+              window.location.reload();
+          }
+      });
+    </script> 
+  </head>
+<body>
+{% include "navbar.html" %}    
+<br><br><br>
+<div class="upper-area">
+    <br><br>
+    <div class="brand-container">
+        <div class="main-title">
+            <div class="main-logo">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="50"
+                    height="50"
+                    fill="none">
+                    <defs>
+                        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#ec4899" />
+                            <stop offset="100%" stop-color="#c084fc" />
+                        </linearGradient>
+                    </defs>
+
+                    <path stroke="url(#logoGradient)"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z" />
+                </svg>
+            </div>
+            <h1 class="main-title-text">Captrix</h1>
+        </div>
+        <!-- Subtitle BELOW the main title -->
+        <p class="subtitle">Intelligent Video Summarization Powered by AI</p>
+    </div>
+    <br>
+    <div class="selection-window">
+        <div class="selection-area-container">
+            <div class="selection-area">
+                <div class="icon-circle">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    class="upload-icon"
+                    width="50"
+                    height="50">
+                    <path stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
+                    </svg>
+                </div><br>
+                <div class="text-inside-selection-area">
+                <div class="choose-a-video">Choose a video or drag it here</div><br>
+                <div class="supports">Supports MP4, MOV, AVI, and more</div>
+                </div>
+                <input type="file" id="videoInput" accept="video/*" hidden>
+                <div class="upload-status">
+                    <div class="file-name"></div>
+                    <div class="progress-bar">
+                        <div class="progress"></div>
+                    </div>
+                </div>
+            </div><br>
+            <button id="summarizeBtn" disabled>Summarize Video</button>
+        </div>    
+    </div>
+    <!-- ANALYZING WINDOW -->
+    <div id="analyzingWindow" class="analyzing-window" style="display:none;">
+      <div class="analyzing-card">
+        <div class="spinner"></div>
+          <p class="analyzing-title" id="dynamicStatus">
+            Analyzing Video...
+          </p>
+          <p class="analyzing-subtext">Please wait while our AI processes your video</p>
+        </div>
+    </div>
+    <div id="resultWindow" class="result-window" style="display:none;">
+
+      <!-- HEADER -->
+      <div class="result-header">
+        <h2>Video Summary</h2>
+        <span class="status completed">Completed</span>
+      </div>
+
+      <!-- META INFO -->
+      <div class="video-meta">
+        <div>
+          <span class="meta-label">Title</span>
+          <span id="videoTitle" class="meta-value"></span>
+        </div>
+        <div>
+          <span class="meta-label">Duration</span>
+          <span id="videoDuration" class="meta-value"></span>
+        </div>
+        <div>
+          <span class="meta-label">File Size</span>
+          <span id="videoSize" class="meta-value"></span>
+        </div>
+      </div>
+
+      <!-- SUMMARY -->
+      <div class="summary-section">
+        <h3>Summary</h3>
+        <p id="summaryText"></p>
+      </div>
+
+      <!-- AUDIO -->
+      <audio id="audioPlayer" controls></audio>
+
+      <!-- KEY EVENTS -->
+      <div class="key-events">
+        <h3>Key Events</h3><br>
+        <ul id="keyEventsList"></ul>
+      </div>
+
+      <!-- ACTIONS -->
+      <div class="result-actions">
+        <button id="copySummaryBtn" class="secondary-btn"><div class="copy-summary-text">Copy Summary</div></button>
+        <button id="resetBtn"><div class="summarize-another-text">Summarize Another Video</div></button>
+      </div>
+    </div>
+
+    <br>
+    <p class="upload-your-video">Upload your video and get an AI-powered summary in seconds</p>
+</div> 
+{% include "footer.html" %}   
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  const selectionArea = document.querySelector('.selection-area');
+  const videoInput = document.getElementById('videoInput');
+  const uploadStatus = document.querySelector('.upload-status');
+  const fileNameEl = document.querySelector('.file-name');
+  const progressEl = document.querySelector('.progress');
+  const summarizeBtn = document.getElementById('summarizeBtn');
+  const copyBtn = document.getElementById("copySummaryBtn");
+  const resetBtn = document.getElementById("resetBtn");
+  const analyzingWindow = document.getElementById('analyzingWindow');
+  const resultWindow = document.getElementById('resultWindow');
+  const dynamicStatus = document.getElementById("dynamicStatus");
+  const resultActions = document.querySelector(".result-actions");
+
+  let uploadedVideoId = null;
+  let uploadedVideoPath = null;
+
+  /* =========================================
+     🔥 ANALYZING WINDOW TYPING (FASTER)
+  ========================================= */
+
+  const statusMessages = [
+    "Analyzing Video...",
+    "Extracting Key Frames...",
+    "Generating AI Summary...",
+    "Creating Audio Narration...",
+    "Finalizing Results..."
+  ];
+
+  let statusIndex = 0;
+  let stageTimeout = null;
+  let typingInterval = null;
+
+  function typeStage(text, callback) {
+
+    let charIndex = 0;
+    dynamicStatus.textContent = text.charAt(0);
+    charIndex = 1;
+
+    typingInterval = setInterval(() => {
+      dynamicStatus.textContent += text.charAt(charIndex);
+      charIndex++;
+
+      if (charIndex >= text.length) {
+        clearInterval(typingInterval);
+        stageTimeout = setTimeout(callback, 6000);
+      }
+    }, 25); // 🔥 faster analyzing typing
+  }
+
+  function startStatusAnimation() {
+
+    statusIndex = 0;
+    dynamicStatus.textContent = statusMessages[0];
+
+    function nextStage() {
+      statusIndex++;
+      if (statusIndex < statusMessages.length) {
+        typeStage(statusMessages[statusIndex], nextStage);
+      }
+    }
+
+    stageTimeout = setTimeout(nextStage, 6000);
+  }
+
+  function stopStatusAnimation() {
+    clearInterval(typingInterval);
+    clearTimeout(stageTimeout);
+  }
+
+  /* =========================================
+      FAST TYPING FUNCTION
+  ========================================= */
+
+  function typeFast(element, text, speed, callback = null) {
+
+    element.textContent = "";
+    let index = 0;
+
+    const interval = setInterval(() => {
+      element.textContent += text.charAt(index);
+      index++;
+
+      if (index >= text.length) {
+        clearInterval(interval);
+        if (callback) callback();
+      }
+    }, speed);
+  }
+
+  /* =========================================
+     📋 COPY SUMMARY
+  ========================================= */
+
+  copyBtn.addEventListener("click", function () {
+
+    const summaryText = document.getElementById("summaryText").textContent;
+
+    if (!summaryText.trim()) {
+      alert("No summary available to copy.");
+      return;
+    }
+
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(summaryText)
+        .then(() => showCopied())
+        .catch(() => fallbackCopy(summaryText));
+    } else {
+      fallbackCopy(summaryText);
+    }
+
+    function fallbackCopy(text) {
+      const textArea = document.createElement("textarea");
+      textArea.value = text;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textArea);
+      showCopied();
+    }
+
+    function showCopied() {
+      copyBtn.querySelector(".copy-summary-text").innerText = "Copied!";
+      setTimeout(() => {
+        copyBtn.querySelector(".copy-summary-text").innerText = "Copy Summary";
+      }, 1500);
+    }
+  });
+
+  /* =========================================
+     🔄 SUMMARIZE ANOTHER VIDEO
+  ========================================= */
+
+  resetBtn.addEventListener("click", function () {
+
+    const selectionWindow = document.querySelector(".selection-window");
+    selectionWindow.scrollIntoView({ behavior: "smooth" });
+
+    videoInput.value = "";
+
+    selectionArea.classList.add("highlight");
+    setTimeout(() => {
+      selectionArea.classList.remove("highlight");
+    }, 1200);
+
+    videoInput.click();
+  });
+
+  /* =========================================
+     📤 FILE UPLOAD
+  ========================================= */
+
+  uploadStatus.style.display = 'none';
+  summarizeBtn.disabled = true;
+  progressEl.style.width = '0%';
+
+  selectionArea.addEventListener('click', () => {
+    videoInput.click();
+  });
+
+  videoInput.addEventListener('change', () => {
+    if (videoInput.files.length > 0) {
+      uploadFile(videoInput.files[0]);
+    }
+  });
+
+  function uploadFile(file) {
+
+    if (!file.type.startsWith('video/')) {
+      alert('Please select a valid video file.');
+      return;
+    }
+
+    fileNameEl.textContent = file.name;
+    uploadStatus.style.display = 'flex';
+    summarizeBtn.disabled = true;
+    progressEl.style.width = '0%';
+
+    const formData = new FormData();
+    formData.append('video', file);
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', '/upload/', true);
+
+    xhr.upload.onprogress = function (event) {
+      if (event.lengthComputable) {
+        const percent = (event.loaded / event.total) * 100;
+        progressEl.style.width = percent + '%';
+      }
+    };
+
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        const response = JSON.parse(xhr.responseText);
+        uploadedVideoId = response.video_id;
+        uploadedVideoPath = response.video_path;
+        progressEl.style.width = '100%';
+        summarizeBtn.disabled = false;
+      } else {
+        alert('Upload failed.');
+      }
+    };
+
+    xhr.onerror = function () {
+      alert('Upload error occurred.');
+    };
+
+    xhr.send(formData);
+  }
+
+  /* =========================================
+     🎬 PROCESS VIDEO
+  ========================================= */
+
+  summarizeBtn.addEventListener('click', () => {
+
+    if (!uploadedVideoId || !uploadedVideoPath) return;
+
+    summarizeBtn.disabled = true;
+
+    resultWindow.style.display = 'none';
+    analyzingWindow.style.display = 'flex';
+    resultActions.classList.remove("show");
+
+    analyzingWindow.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center'
+    });
+
+    startStatusAnimation();
+
+    const formData = new URLSearchParams();
+    formData.append('video_id', uploadedVideoId);
+    formData.append('video_path', uploadedVideoPath);
+
+    fetch('/process-video/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: formData.toString()
+    })
+    .then(() => {
+
+      const poll = setInterval(() => {
+
+        fetch(`/check-status/${uploadedVideoId}/`)
+          .then(res => res.json())
+          .then(data => {
+
+            if (data.status === 'completed') {
+
+              clearInterval(poll);
+              stopStatusAnimation();
+
+              analyzingWindow.style.display = 'none';
+              resultWindow.style.display = 'block';
+
+              if (data.metadata) {
+                document.getElementById('videoTitle').textContent =
+                  data.metadata.title || "N/A";
+                document.getElementById('videoDuration').textContent =
+                  data.metadata.duration || "N/A";
+                document.getElementById('videoSize').textContent =
+                  data.metadata.size || "N/A";
+              }
+
+              const summaryText = data.summary || "No summary available.";
+              const summaryElement = document.getElementById('summaryText');
+
+              const totalDuration = 1000; // 1 second total
+              const calculatedSpeed = Math.max(5, totalDuration / summaryText.length);
+
+              typeFast(summaryElement, summaryText, calculatedSpeed, () => {
+                typeKeyframes(data);
+              });
+
+              if (data.audio_url) {
+                const audioPlayer = document.getElementById("audioPlayer");
+                audioPlayer.src = data.audio_url;
+                audioPlayer.load();
+                audioPlayer.play().catch(() => {});
+              }
+
+              resultWindow.scrollIntoView({ behavior: 'smooth' });
+            }
+
+            if (data.status === 'failed') {
+              clearInterval(poll);
+              stopStatusAnimation();
+              analyzingWindow.style.display = 'none';
+              alert('Processing failed.');
+            }
+
+          });
+
+      }, 2000);
+    });
+  });
+
+  /* =========================================
+     🎞️ KEYFRAMES WITH FADE-IN + BUTTON REVEAL
+  ========================================= */
+
+  function typeKeyframes(data) {
+
+    const keyList = document.getElementById('keyEventsList');
+    keyList.innerHTML = "";
+
+    let frameIndex = 0;
+
+    function typeNextFrame() {
+
+      if (frameIndex >= data.captions.length) {
+
+        setTimeout(() => {
+          resultActions.classList.add("show");
+        }, 200);
+
+        return;
+      }
+
+      const item = data.captions[frameIndex];
+
+      const li = document.createElement('li');
+      li.className = "keyframe-item";
+
+      const img = document.createElement('img');
+      img.className = "keyframe-image";
+      img.src = data.image_urls[frameIndex];
+
+      const captionContainer = document.createElement('div');
+      captionContainer.className = "caption-card";
+
+      const frameTag = document.createElement('span');
+      frameTag.className = "frame-tag";
+      frameTag.textContent = `Frame ${item.frame}`;
+
+      const captionText = document.createElement('p');
+      captionText.className = "frame-caption";
+
+      captionContainer.appendChild(frameTag);
+      captionContainer.appendChild(captionText);
+
+      li.appendChild(img);
+      li.appendChild(captionContainer);
+      keyList.appendChild(li);
+
+      setTimeout(() => {
+        li.classList.add("show");
+      }, 50);
+
+      typeFast(captionText, item.caption, 12, () => {
+        frameIndex++;
+        typeNextFrame();
+      });
+    }
+
+    typeNextFrame();
+  }
+
+});
+</script>
+</body>
+</html>

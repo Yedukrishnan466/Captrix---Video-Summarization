@@ -1,0 +1,6 @@
+OUTPUTS;
+
+Folder with video file name
+|--summary.txt
+|--GTTS narration audio files
+|--keyframes as images

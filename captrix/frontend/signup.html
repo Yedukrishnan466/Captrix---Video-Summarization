@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Account</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f3f4f6;
+            padding: 20px;
+        }
+
+        .signup-container {
+            width: 100%;
+            max-width: 450px;
+            background: #ffffff;
+            padding: 40px 35px;
+            border-radius: 20px;
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, 0.08),
+                0 40px 80px rgba(0, 0, 0, 0.05);
+        }
+
+        .signup-title {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #111827;
+        }
+
+        .signup-subtitle {
+            text-align: center;
+            font-size: 15px;
+            color: #6b7280;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #374151;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            padding: 14px 14px 14px 42px;
+            border-radius: 12px;
+            border: 1px solid #d1d5db;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .input-wrapper input:focus {
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+        }
+
+        .input-icon {
+            position: absolute;
+            top: 50%;
+            left: 14px;
+            transform: translateY(-50%);
+            font-size: 16px;
+            color: #9ca3af;
+        }
+
+        .password-hint {
+            font-size: 13px;
+            margin-top: 6px;
+            color: #6b7280;
+        }
+
+        .terms {
+            display: flex;
+            align-items: flex-start;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #374151;
+        }
+
+        .terms input {
+            margin-right: 8px;
+            margin-top: 3px;
+        }
+
+        .terms a {
+            color: #7c3aed;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .terms a:hover {
+            text-decoration: underline;
+        }
+
+        .signup-button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #ffffff;
+            cursor: pointer;
+
+            background: linear-gradient(
+                90deg,
+                #9333ea,
+                #6366f1,
+                #2563eb
+            );
+
+            transition: all 0.3s ease;
+
+            box-shadow:
+                0 10px 25px rgba(99, 102, 241, 0.25);
+        }
+
+        .signup-button:hover {
+            transform: translateY(-2px);
+            box-shadow:
+                0 14px 35px rgba(99, 102, 241, 0.35);
+        }
+
+        /* Responsive */
+
+        @media (max-width: 480px) {
+            .signup-container {
+                padding: 30px 20px;
+            }
+
+            .signup-title {
+                font-size: 24px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="signup-container">
+
+        <div class="signup-title">Create Account</div>
+        <div class="signup-subtitle">Get started with Captrix today</div>
+        {% if messages %}
+        {% for message in messages %}
+            <div style="color:red; margin-bottom:15px; font-size:14px;">
+                {{ message }}
+            </div>
+        {% endfor %}
+        {% endif %}
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label>Full Name</label>
+                <div class="input-wrapper">
+                    <span class="input-icon">👤</span>
+                    <input type="text" name="fullname" placeholder="Enter you fullname" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <div class="input-wrapper">
+                    <span class="input-icon">✉</span>
+                    <input type="email" name="email" placeholder="you@example.com" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <div class="input-wrapper">
+                    <span class="input-icon">🔒</span>
+                    <input type="password" name="password" placeholder="••••••••" required>
+                </div>
+                <div class="password-hint">
+                    Must be at least 8 characters
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Confirm Password</label>
+                <div class="input-wrapper">
+                    <span class="input-icon">🔒</span>
+                    <input type="password" name="confirm_password" placeholder="••••••••" required>
+                </div>
+            </div>
+
+            <div class="terms">
+                <input type="checkbox" required>
+                <div>
+                    I agree to the 
+                    <a href="#">Terms of Service</a> 
+                    and 
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+
+            <button type="submit" class="signup-button">
+                Create Account
+            </button>
+
+        </form>
+
+    </div>
+
+</body>
+</html>

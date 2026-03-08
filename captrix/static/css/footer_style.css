@@ -1,0 +1,101 @@
+/* ======================
+   FOOTER
+====================== */
+
+.site-footer {
+  background-color: #ffffff;
+  width:100%;
+  color: #000000;
+  padding: 48px 24px 20px;
+  font-family: 'Inter', sans-serif;
+  border-top: #bcbcbc;
+  border-style: solid;
+  border-width: thin;
+}
+
+.footer-content {
+  max-width: 1210px; 
+  margin: 0 auto;
+  display: flex;
+  gap: 60px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-brand {
+  max-width: 260px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.footer-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.footer-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #9ca3af;
+}
+
+.footer-links h4,
+.footer-contact h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  color: #c084fc;
+}
+
+.footer-contact p {
+  font-size: 14px;
+  color: #9ca3af;
+  margin-bottom: 8px;
+}
+
+.footer-bottom {
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid #c8c8c8;
+  text-align: center;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    gap: 32px;
+  }
+}
+
+/* Footer logo size */
+.footer-logo svg {
+  width: 24px;     /* 👈 smaller */
+  height: 24px;
+}
+

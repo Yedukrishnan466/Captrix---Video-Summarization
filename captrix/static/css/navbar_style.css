@@ -1,0 +1,356 @@
+/* ======================
+   NAVBAR
+====================== */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #ffffff;
+  border-bottom: 1px solid #c7c7c7;
+}
+
+.navbar-container {
+  max-width: 1257px;
+  margin: 0 auto;
+  padding: 14px 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+/* Brand */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.navbar-title {
+  font-family: 'Inter',sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* ======================
+   CENTER LINKS
+====================== */
+
+.navbar-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+  list-style: none;
+  display: flex;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-center a {
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #374151;
+  transition: color 0.2s ease;
+}
+
+.navbar-center a:hover {
+  color: #7c3aed;
+}
+
+/* ======================
+   RIGHT LINKS
+====================== */
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin: 0;
+  padding: 0;
+}
+
+/* Sign In */
+.navbar-links .signin {
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #374151;
+  transition: color 0.2s ease;
+}
+
+.navbar-links .signin:hover {
+  color: #bf00ff;
+}
+
+/* ======================
+   GET STARTED BUTTON
+====================== */
+
+.navbar-links .get-started-btn {
+  padding: 9px 20px;
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  display: inline-block;
+  color: #ffffff !important;
+
+  background: linear-gradient(
+    90deg,
+    #ec4899,
+    #c084fc,
+    #3b82f6
+  );
+
+  box-shadow: 
+    0 4px 14px rgba(236, 72, 153, 0.4),
+    0 0 10px rgba(192, 132, 252, 0.3);
+
+  transition: all 0.3s ease;
+}
+
+.navbar-links .get-started-btn:hover {
+  color: #ffffff !important;
+  transform: translateY(-3px) scale(1.03);
+
+  box-shadow: 
+    0 8px 22px rgba(236, 72, 153, 0.5),
+    0 0 18px rgba(192, 132, 252, 0.6),
+    0 0 28px rgba(59, 130, 246, 0.5);
+}
+
+/* ======================
+   RESPONSIVE
+====================== */
+
+@media (max-width: 768px) {
+  .navbar-center {
+    display: none;
+  }
+}
+
+/* ==========================
+   ENHANCED RESPONSIVENESS
+========================== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+
+  .navbar-container {
+    padding: 12px 20px;
+  }
+
+  .navbar-center {
+    gap: 25px;
+  }
+
+  .navbar-links {
+    gap: 16px;
+  }
+}
+
+
+/* Mobile */
+@media (max-width: 768px) {
+
+  .navbar-container {
+    padding: 12px 16px;
+  }
+
+  /* Hide center nav links */
+  .navbar-center {
+    display: none;
+  }
+
+  /* Adjust right side spacing */
+  .navbar-links {
+    gap: 12px;
+  }
+
+  .navbar-links .signin {
+    font-size: 14px;
+  }
+
+  .navbar-links .get-started-btn {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+
+  .navbar-title {
+    font-size: 18px;
+  }
+}
+
+
+/* Extra Small Devices */
+@media (max-width: 480px) {
+
+  .navbar-title {
+    font-size: 16px;
+  }
+
+  .navbar-links .signin {
+    display: none; /* keeps navbar clean on very small screens */
+  }
+
+  .navbar-links .get-started-btn {
+    padding: 7px 14px;
+    font-size: 12px;
+  }
+}
+
+/* ==========================
+   HAMBURGER MENU
+========================== */
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: #374151;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* ==========================
+   MOBILE RIGHT DROPDOWN
+========================== */
+
+@media (max-width: 768px) {
+
+  .navbar-container {
+    position: relative;
+  }
+
+  .navbar-center {
+    position: absolute;
+    top: 60px;
+    right: 16px;          /* 🔥 move to right */
+    left: auto;           /* remove left alignment */
+    transform: none;
+
+    width: 200px;         /* 🔥 reduced width */
+    background-color: #ffffff;
+
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 18px 0;
+    gap: 18px;
+
+    border-radius: 12px;  /* floating box look */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+
+    border: 1px solid #e5e7eb;
+  }
+
+  .navbar-center.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .navbar-links {
+    display: none;
+  }
+}
+
+/* ==========================
+   PROFILE SECTION
+========================== */
+
+.profile-container {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: auto;   /* pushes it to right */
+  cursor: pointer;
+}
+
+.profile-icon svg {
+  width: 25px;
+  height: 25px;
+  color: #6b7280;
+  transition: transform 0.2s ease, color 0.2s ease;
+  margin-top: 4px;
+}
+
+.profile-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #374151;
+  transition: color 0.2s ease;
+}
+
+.profile-container:hover .profile-icon svg {
+  transform: scale(1.05);
+  color: #7c3aed;
+}
+
+.profile-container:hover .profile-name {
+  color: #7c3aed;
+}
+
+@media (max-width: 768px) {
+
+  .profile-container {
+    margin-left: 0;          /* remove auto push */
+    margin-right: 12px;      /* 🔥 small spacing before hamburger */
+  }
+
+  .hamburger {
+    margin-left: 0;
+  }
+
+}
+
+.dropdown-menu {
+    position: absolute;
+    right: 0;
+    top: 45px;
+    background: white;
+    width: 180px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    display: none;
+    overflow: hidden;
+    z-index: 100;
+}
+
+.dropdown-menu a {
+    font-family: 'Inter';
+    display: block;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: #374151;
+    font-size: 12px;
+    transition: background 0.2s ease;
+}
+
+.dropdown-menu a:hover {
+    background: #f3f4f6;
+}

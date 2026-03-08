@@ -1,0 +1,271 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | Captrix</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/footer_style.css' %}">
+<link rel="stylesheet" href="{% static 'css/navbar_style.css' %}">
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+}
+
+body{
+background:#ffffff;
+color:#0f172a;
+line-height:1.7;
+overflow-x:hidden;
+}
+
+.container{
+width:88%;
+max-width:1150px;
+margin:auto;
+padding:60px 0;
+}
+
+.gradient-text{
+background:linear-gradient(90deg,#7c3aed,#2563eb);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+/* HERO */
+.hero{
+padding:150px 20px 70px;
+text-align:center;
+background:linear-gradient(135deg,#faf5ff,#eef2ff);
+}
+
+.hero h1{
+font-size:52px;
+font-weight:700;
+margin-bottom:15px;
+}
+
+.hero p{
+font-size:18px;
+color:#475569;
+max-width:750px;
+margin:auto;
+}
+
+/* FLEX SECTIONS */
+.flex{
+display:flex;
+align-items:center;
+gap:50px;
+flex-wrap:wrap;
+}
+
+.flex.reverse{
+flex-direction:row-reverse;
+}
+
+.text-content{
+flex:1;
+min-width:280px;
+}
+
+.text-content h2{
+font-size:30px;
+margin-bottom:15px;
+}
+
+.text-content p{
+color:#475569;
+margin-bottom:12px;
+}
+
+.text-content ul{
+margin-top:10px;
+padding-left:18px;
+color:#475569;
+}
+
+.text-content li{
+margin-bottom:8px;
+}
+
+.image-content{
+flex:1;
+min-width:280px;
+}
+
+.image-content img{
+width:100%;
+border-radius:20px;
+box-shadow:0 20px 45px rgba(0,0,0,0.08);
+}
+
+/* FEATURES */
+.section-title{
+text-align:center;
+font-size:40px;
+margin-bottom:30px;
+}
+
+.feature-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+margin-top:30px;
+}
+
+.feature-card{
+padding:28px;
+border-radius:20px;
+background:linear-gradient(135deg,#f5f3ff,#eef2ff);
+transition:0.3s;
+box-shadow:0 5px 10px rgba(105, 101, 112, 0.18);
+border-style: solid;
+border-width: thin;
+border-color: #e1e1e1;
+}
+
+.feature-card:hover{
+transform:translateY(-6px);
+box-shadow:0 15px 35px rgba(124,58,237,0.18);
+}
+
+.feature-card h3{
+margin-bottom:10px;
+font-size:18px;
+}
+
+.feature-card p{
+font-size:14px;
+color:#475569;
+}
+
+/* HIGHLIGHT */
+.highlight{
+background:linear-gradient(135deg,#b15bf4,#13388a);
+color:white;
+border-radius:30px;
+padding:55px 30px;
+text-align:center;
+margin-top:40px;
+}
+
+.highlight h2{
+font-size:30px;
+margin-bottom:10px;
+}
+
+.highlight p{
+max-width:650px;
+margin:auto;
+opacity:0.95;
+}
+
+
+@media(max-width:768px){
+.hero h1{font-size:34px;}
+.text-content h2{font-size:24px;}
+}
+</style>
+</head>
+<body>
+{% include "navbar.html" %}  
+<!-- HERO -->
+<section class="hero">
+<h1>About <span class="gradient-text">Captrix</span></h1>
+<p>
+Captrix is an AI-powered video summarization platform designed to transform long-form video content 
+into concise, structured, and meaningful summaries — helping users save time and enhance productivity.
+</p>
+</section>
+
+<!-- IDEA SECTION -->
+<div class="container">
+<div class="flex">
+<div class="text-content">
+<h2 class="gradient-text">The Vision Behind Captrix</h2>
+<p>
+In today’s digital era, video content dominates education and communication. However, 
+watching lengthy videos consumes valuable time.
+</p>
+<p>
+Captrix was developed to intelligently extract key insights using Artificial Intelligence 
+and Natural Language Processing techniques.
+</p>
+<p>
+Our goal is simple: <strong>deliver maximum knowledge in minimum time.</strong>
+</p>
+</div>
+<div class="image-content">
+<img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c" alt="AI Technology">
+</div>
+</div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="container">
+<div class="flex reverse">
+<div class="text-content">
+<h2 class="gradient-text">How Captrix Works</h2>
+<p>The summarization pipeline follows a structured AI workflow:</p>
+<ul>
+<li><strong>Upload:</strong> User uploads or links a video.</li>
+<li><strong>Speech Analysis:</strong> Audio is processed and transcribed.</li>
+<li><strong>NLP Processing:</strong> Key points are extracted.</li>
+<li><strong>Smart Summary:</strong> Structured output is generated instantly.</li>
+</ul>
+</div>
+<div class="image-content">
+<img src="https://images.unsplash.com/photo-1518770660439-4636190af475" alt="AI Processing">
+</div>
+</div>
+</div>
+
+<!-- FEATURES -->
+<div class="container">
+<h2 class="section-title gradient-text">Core Capabilities</h2>
+<div class="feature-grid">
+
+<div class="feature-card">
+<h3>AI-Based Summarization</h3>
+<p>Advanced machine learning models extract relevant insights automatically.</p>
+</div>
+
+<div class="feature-card">
+<h3>High Accuracy</h3>
+<p>Optimized algorithms ensure meaningful and reliable summaries.</p>
+</div>
+
+<div class="feature-card">
+<h3>Secure Authentication</h3>
+<p>Django-powered user authentication for safe and personalized access.</p>
+</div>
+
+<div class="feature-card">
+<h3>Responsive Interface</h3>
+<p>Modern UI designed for seamless experience across all devices.</p>
+</div>
+
+</div>
+</div>
+
+<!-- HIGHLIGHT -->
+<div class="container">
+<div class="highlight">
+<h2>Redefining Video Learning with AI</h2>
+<p>
+Captrix empowers students, professionals, and researchers to consume knowledge faster, 
+stay productive, and focus on what truly matters.
+</p>
+</div>
+</div>
+
+{% include "footer.html" %}   
+
+</body>
+</html>
